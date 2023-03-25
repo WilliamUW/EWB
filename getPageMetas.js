@@ -98,6 +98,7 @@ fetch(url, {
     chrome.runtime.sendMessage({
         method:"getMetas",
         metas:metaArr,
+        domain: document.domain,
         score:data.choices[0].text.trim(),
         product_explanation:data.choices[1].text.trim(),
         alternatives:data.choices[2].text.trim()
