@@ -1,3 +1,22 @@
+<!-- 
+Cyber rights score
+Company analysis
+	Company Name
+	Company Logo
+	When it was founded
+	Their Website
+	How many users they have
+	How many data the collect
+	So that's the LEFT BAR
+	and then RIGHT BAR
+	last time you used the service
+	what data they collect (email, location ...)
+	Industry breach potential
+	Risk of data exposure
+Company name/info
+Rest of analysis and alternatives 
+-->
+
 <!doctype html>
 <html>
 	<head>
@@ -9,50 +28,15 @@
 				background-color: white;
 			}
 			#score-circle {
-    width: 200px;
-    height: 200px;
-    background-color: green; /* or any other desired color */
-    border-radius: 50%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-#score-circle span {
-    font-size: 48px;
-    font-weight: bold;
-    color: white;
-    z-index: 2;
-}
-
-#score-circle .percentage {
-    font-size: 24px;
-    font-weight: bold;
-    position: absolute;
-    bottom: -40px;
-    right: 0;
-}
-			/* #score-circle {
 				width: 200px;
 				height: 200px;
-				background-color: #ccc;
+				background-color: green;
 				border-radius: 50%;
-				margin: 20px auto;
+				margin: 0 auto;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				position: relative;
-			}
-			#score-circle::before {
-				content: "";
-				width: 80%;
-				height: 80%;
-				background-color: white;
-				border-radius: 50%;
-				position: absolute;
-				z-index: 1;
 			}
 			#score-circle span {
 				font-size: 48px;
@@ -66,21 +50,18 @@
 				position: absolute;
 				bottom: -40px;
 				right: 0;
-			} */
-			#score {
-				color:black !important;
 			}
 			.unknown {
-				background-color: grey !important;
+				background-color: grey;
 			}
 			.green {
-				background-color: green !important;
+				background-color: green;
 			}
 			.yellow {
-				background-color: yellow !important;
+				background-color: yellow;
 			}
 			.red {
-				background-color: red !important;
+				background-color: red;
 			}
 			.explanation-title,
 			.alternative-title {
@@ -96,6 +77,37 @@
 			.link {
 				font-size: 30px;
 			}
+
+			#new-bar {
+			width: 80%;
+			margin: 0 auto;
+			}
+
+			#new-bar p {
+			font-size: 20px;
+			text-align: left;
+			margin-left: 20px;
+			}
+
+			#new-bar img {
+			display: inline-block;
+			max-width: 40%;
+			height: auto;
+			margin-left: 20px;
+			vertical-align: middle;
+			}
+
+			#new-bar strong {
+			display: inline-block;
+			width: 180px;
+			}
+
+			@media only screen and (max-width: 768px) {
+			#new-bar img {
+				max-width: 10%;
+			}
+			}
+
 		</style>
 	</head>
 	<body>
@@ -108,15 +120,23 @@
 		<br />
 		<br />
 		<br />
-		<p id="credit" class="alternative-title" style="color: green">+0 SustainBuy Credits</p>
+		<p id="credit" class="alternative-title" style="color: green">+0 Cyber rights score</p>
 		<p class="explanation-title">Company Cyber Ethics & Digital Rights Analysis</p>
-		<p id="product_explanation" class="explanation-p">
-			Generating Analysis!
-		</p>
-		<!-- <p class="explanation-title">Company Analysis</p>
-		<p id="company_explanation" class="explanation-p">
-			Generating Analysis!
-		</p> -->
+		<!--  -->
+		<div id="new-bar">
+			<p><strong>Company Name:</strong> Cyber Ethics & Digital Rights Analysis</p>
+			<p><strong>Company Logo:</strong> <img src="./logo.png" alt="logo"></p>
+			<p><strong>Founded:</strong> 2021</p>
+			<p><strong>Website:</strong> <a href="https://www.cyberethicsdr.com/">https://www.cyberethicsdr.com/</a></p>
+			<p><strong>Number of Users:</strong> 1000</p>
+			<p><strong>Data Collected:</strong> Email, Location, IP Address</p>
+			<p><strong>Last Time You Used the Service:</strong> 3 months ago</p>
+			<p><strong>Data Collected:</strong> Email, Location, IP Address</p>
+			<p><strong>Industry Breach Potential:</strong> High</p>
+			<p><strong>Risk of Data Exposure:</strong> Medium</p>
+		</div>
+		<div style="clear:both"></div>
+		<!--  -->
 		<p class="alternative-title">Alternatives</p>
 		<p id="alternatives" class="explanation-p">
 			Generating Alternatives!
