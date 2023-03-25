@@ -69,11 +69,13 @@ Find 3 alternative websites that are similar to the company: ${company} that hav
 const type_data_prompt = `What type of data does ${company} collect from its users? Reply concisely and separate the types with commas.`
 const breaches_prompt = `Give one short paragraph about the breach potential in ${company}'s industry.`
 const risk_prompt = `What is the risk of data exposure using ${company}'s services?`
+const breach_prompt = `Tell me about the last data breach of ${company}?`
+
 
 console.log("alternative_prompt", alternative_prompt)
 
-let dataBreach = "Oct 2020";
-switch(document.domain) {
+let dataBreach = "";
+/*switch(document.domain) {
     case "www.google.com":
       // code block
       dataBreach = "Jan 2023"
@@ -92,7 +94,7 @@ switch(document.domain) {
     break;
     default:
       // code block
-  }
+  }*/
 const url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 const body = {
     prompt: [score_prompt, product_explanation_prompt, alternative_prompt],
@@ -102,7 +104,7 @@ const body = {
 };
 
 const body2= {
-    prompt: [type_data_prompt, breaches_prompt, risk_prompt],
+    prompt: [type_data_prompt, breaches_prompt, risk_prompt, breach_prompt],
     max_tokens: 2000,
     n: 1,
     stop: ""
@@ -161,6 +163,8 @@ fetch(url, {
                 type_data: data.choices[0].text.trim(),
                 breaches: data.choices[1].text.trim(),
                 risk: data.choices[2].text.trim(),
+                lastBreach: data.choices[3].text.trim(),
+
             });
         })
         .catch((error) => {
