@@ -74,7 +74,7 @@ console.log("alternative_prompt", alternative_prompt)
 
 const url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 const body = {
-    prompt: [score_prompt, product_explanation_prompt, alternative_prompt, /*users_prompt*/, type_data_prompt, breaches_prompt, risk_prompt],
+    prompt: [score_prompt, product_explanation_prompt, alternative_prompt],
     max_tokens: 1000,
     n: 1,
     stop: ""
