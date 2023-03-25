@@ -27,6 +27,8 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 		document.getElementById("dataCollected").innerText = request.type_data;
 		document.getElementById("Potential").innerText = request.breaches;
 		document.getElementById("Risk").innerText = request.risk;
+		document.getElementById("dataBreach").innerText = request.lastBreach;
+
 
 	}
 	const regex = /\d+/g; // matches any sequence of digits
@@ -47,8 +49,9 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	document.getElementById("domainName").innerText = domain;
 	document.getElementById("domainName").href = domain;
 
-	document.getElementById("dataBreach").innerText = request.dataBreach;
-/*
+	if (request.dataBreach != '') {
+		document.getElementById("dataBreach").innerText = request.dataBreach;
+	}/*
 	document.getElementById("dataCollected").innerText = datacollected;
 */
 	document.getElementById("credit").innerHTML = "+" + credit + " CyberGuardian Credits";
