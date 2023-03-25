@@ -21,6 +21,14 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 		} 
 	}
 	}
+
+
+	if (request.method == "getMetas2") {
+		document.getElementById("dataCollected").innerText = request.type_data;
+		document.getElementById("Potential").innerText = request.breaches;
+		document.getElementById("Risk").innerText = request.risk;
+
+	}
 	const regex = /\d+/g; // matches any sequence of digits
 	const scores = request.score.match(regex); 
 
@@ -40,8 +48,9 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	document.getElementById("domainName").href = domain;
 
 	document.getElementById("dataBreach").innerText = request.dataBreach;
-
-
+/*
+	document.getElementById("dataCollected").innerText = datacollected;
+*/
 	document.getElementById("credit").innerHTML = "+" + credit + " CyberGuardian Credits";
 
 	document.getElementById("score").innerText = score;
@@ -49,6 +58,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	document.getElementById("product_explanation").innerHTML = request.product_explanation;
 	// document.getElementById("company_explanation").innerHTML = request.company_explanation;
 	document.getElementById("alternatives").innerText = request.alternatives;
+
 
 // Use the score to determine the background color
 console.log(score);

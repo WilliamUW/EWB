@@ -68,7 +68,7 @@ Find 3 alternative websites that are similar to the company: ${company} that hav
 //const users_prompt = `How many total users does ${company} have? Return a number only.`
 const type_data_prompt = `What type of data does ${company} collect from its users? Reply concisely and separate the types with commas.`
 const breaches_prompt = `Give one short paragraph about the breach potential in ${company}'s industry.`
-const risk_prompt = `Return one word answer only from Low, Medium, High. What is the risk of data exposure using ${company}'s services?`
+const risk_prompt = `What is the risk of data exposure using ${company}'s services?`
 
 console.log("alternative_prompt", alternative_prompt)
 
@@ -124,7 +124,7 @@ fetch(url, {
 }).then(data => {
     console.log(data.choices);
     chrome.runtime.sendMessage({
-        method:"getRequest1Response",
+        method:"getMetas",
         metas:metaArr,
         dataBreach: dataBreach,
         domain: document.domain,
@@ -154,7 +154,7 @@ fetch(url, {
         .then((data) => {
             console.log(data.choices);
             chrome.runtime.sendMessage({
-                method: "getRequest2Response",
+                method: "getMetas2",
                 metas: metaArr,
                 dataBreach: dataBreach,
                 domain: document.domain,
