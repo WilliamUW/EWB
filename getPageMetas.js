@@ -63,7 +63,7 @@ Finally a one paragraph explanation regarding the overall state of the cyber eth
 console.log("product_explanation_prompt", product_explanation_prompt)
 
 const alternative_prompt = `
-Find 3 alternative websites that are similar to the company: ${company} that have better cyber ethics and digital rights. They must score equal or better than ${company} between 0 and 100.`
+Find 3 alternative websites that are similar to the company: ${company} that have better cyber ethics and digital rights. They must score equal or better than ${company} between 0 and 100. Only reply with the name and score.`
 
 //const users_prompt = `How many total users does ${company} have? Return a number only.`
 const type_data_prompt = `What type of data does ${company} collect from its users? Reply concisely and separate the types with commas.`
@@ -74,8 +74,15 @@ console.log("alternative_prompt", alternative_prompt)
 
 const url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 const body = {
-    prompt: [score_prompt, product_explanation_prompt, alternative_prompt, /*users_prompt*/, type_data_prompt, breaches_prompt, risk_prompt],
-    max_tokens: 1000,
+    prompt: [score_prompt, product_explanation_prompt, alternative_prompt],
+    max_tokens: 2000,
+    n: 1,
+    stop: ""
+};
+
+const body2= {
+    prompt: [type_data_prompt, breaches_prompt, risk_prompt],
+    max_tokens: 2000,
     n: 1,
     stop: ""
 };
@@ -96,7 +103,7 @@ fetch(url, {
 }).then(data => {
     console.log(data.choices);
     chrome.runtime.sendMessage({
-        method:"getMetas",
+        method:"getRequest1Response",
         metas:metaArr,
         score:data.choices[0].text.trim(),
         product_explanation:data.choices[1].text.trim(),
@@ -105,6 +112,37 @@ fetch(url, {
 }).catch(error => {
     console.error(error);
 }).finally(() => {
-    console.log("getPageMetas - end");
-})};
+    console.log("getResponse1 - end");
+})
+    // Second request
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(body2),
+        headers: headers,
+    })
+        .then((response) => {
+            console.log("22222222");
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("ChatGPT API request failed.");
+            }
+        })
+        .then((data) => {
+            console.log(data.choices);
+            chrome.runtime.sendMessage({
+                method: "getRequest2Response",
+                metas: metaArr,
+                type_data: data.choices[0].text.trim(),
+                breaches: data.choices[1].text.trim(),
+                risk: data.choices[2].text.trim(),
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+        .finally(() => {
+            console.log("getResponse2 - end");
+        })
+};
 
