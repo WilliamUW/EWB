@@ -1,6 +1,6 @@
 const headers = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer " + "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"
+    "Authorization": "Bearer " + "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"
 };
 
 console.log("getPageMetas - begin")
