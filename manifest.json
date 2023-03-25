@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name": "Privacy Extension",
-	"description": "Find the perfect product for both you and the planet, and get rewarded for it! 🌎",
+	"name": "CyberGuardian",
+	"description": "CyberGuardian's security & ethical analysis for websites helps find alternatives with better privacy policies. Join us to make the digital world safer! 💻 🔐",
 	"version": "1.0.1",
 
 	"browser_action": {
