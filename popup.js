@@ -33,6 +33,13 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	//let credit = max(score - 50, 0);
 	//credit = floor(credit/7);
 	console.log(credit);
+
+	const domain = request.domain;
+
+	document.getElementById("domainName").innerText = domain;
+	document.getElementById("domainName").href = domain;
+
+
 	document.getElementById("credit").innerHTML = "+" + credit + " CyberGuardian Credits";
 
 	document.getElementById("score").innerText = score;
