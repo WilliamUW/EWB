@@ -72,6 +72,27 @@ const risk_prompt = `Return one word answer only from Low, Medium, High. What is
 
 console.log("alternative_prompt", alternative_prompt)
 
+let dataBreach = "Oct 2020";
+switch(document.domain) {
+    case "www.google.com":
+      // code block
+      dataBreach = "Jan 2023"
+      break;
+    case "www.snapchat.com":
+    // code block
+    dataBreach = "Mar 2022"
+    break;
+    case "facebook.com":
+    dataBreach = "Apr 2021"
+      // code block
+      break;
+      case "www.instagram.com":
+    // code block
+    dataBreach = "Jan 2021"
+    break;
+    default:
+      // code block
+  }
 const url = "https://api.openai.com/v1/engines/text-davinci-003/completions";
 const body = {
     prompt: [score_prompt, product_explanation_prompt, alternative_prompt],
@@ -105,6 +126,8 @@ fetch(url, {
     chrome.runtime.sendMessage({
         method:"getRequest1Response",
         metas:metaArr,
+        dataBreach: dataBreach,
+        domain: document.domain,
         score:data.choices[0].text.trim(),
         product_explanation:data.choices[1].text.trim(),
         alternatives:data.choices[2].text.trim()
@@ -133,6 +156,8 @@ fetch(url, {
             chrome.runtime.sendMessage({
                 method: "getRequest2Response",
                 metas: metaArr,
+                dataBreach: dataBreach,
+                domain: document.domain,
                 type_data: data.choices[0].text.trim(),
                 breaches: data.choices[1].text.trim(),
                 risk: data.choices[2].text.trim(),

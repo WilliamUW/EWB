@@ -39,6 +39,8 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	document.getElementById("domainName").innerText = domain;
 	document.getElementById("domainName").href = domain;
 
+	document.getElementById("dataBreach").innerText = request.dataBreach;
+
 
 	document.getElementById("credit").innerHTML = "+" + credit + " CyberGuardian Credits";
 
